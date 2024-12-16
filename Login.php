@@ -2,18 +2,17 @@
 session_start();
 
 if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) {
-    header("Location: TrueIndex.php");
+    header("Location: Dashboard.php");
     exit;
 }
 ?>
 
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posyandu Desa</title>
+    <title>Login Posyandu Desa</title>
     <style>
         /* Reset CSS */
         * {
@@ -35,6 +34,7 @@ if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) {
             background-color: #fff;
             padding: 30px;
             border-radius: 10px;
+            border: 2px solid #4CAF50; /* Border added */
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 400px;
@@ -60,7 +60,7 @@ if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
-            border: 1px solid #ccc;
+            border: 1px solid #4CAF50; /* Input border */
             border-radius: 5px;
             font-size: 1rem;
         }
