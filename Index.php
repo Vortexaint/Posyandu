@@ -128,7 +128,7 @@
                 <li>Edukasi Kesehatan Ibu & Anak</li>
             </ul>
         </div>
-        <img src="image.png" alt="Kegiatan Posyandu Desa">
+        <img src="Assets\th.jfif" alt="Kegiatan Posyandu Desa">
     </section>
     <footer>
         &copy; 2024 Posyandu Desa. Semua Hak Dilindungi.
