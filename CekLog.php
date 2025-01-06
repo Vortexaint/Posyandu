@@ -13,7 +13,7 @@ if (mysqli_num_rows($result) > 0) {
     exit;
 } else {
     $_SESSION['error'] = "Username atau password salah!";
-    header("Location: Index.php");
+    header("Location: Login.php");
     exit;
 }
 ?>
