@@ -1,12 +1,3 @@
-<?php
-session_start();
-
-if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) {
-    header("Location: Dashboard.php");
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>

@@ -10,8 +10,10 @@ if (mysqli_num_rows($result) > 0) {
     $_SESSION['loggedIn'] = true;
     $_SESSION['username'] = $username;
     header("Location: Dashboard.php");
+    exit;
 } else {
-    echo "Username atau password Salah!";
-    header("Location: Login.php");
+    $_SESSION['error'] = "Username atau password salah!";
+    header("Location: Index.php");
+    exit;
 }
 ?>

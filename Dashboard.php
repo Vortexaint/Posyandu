@@ -1,8 +1,8 @@
-<?php
+<<?php
 session_start();
 
-if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) {
-    header("Location: Dashboard.php");
+if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
+    header("Location: Login.php");
     exit;
 }
 ?>
@@ -12,9 +12,8 @@ if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posyandu Desa</title>
+    <title>Posyandu - Dashboard</title>
     <style>
-        /* Reset CSS */
         * {
             margin: 0;
             padding: 0;
