@@ -6,13 +6,12 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posyandu - Dashboard</title>
+    <title>Kontak Kami</title>
     <style>
         * {
             margin: 0;
@@ -119,24 +118,21 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
         <a href="login.php" class="login-button">Sign In</a>
     </header>
     <nav>
-        <a href="Dashboard.php">Beranda</a>
-        <a href="About.php">Tentang Posyandu</a>
+        <a href="index.php">Beranda</a>
+        <a href="about.php">Tentang Posyandu</a>
         <a href="BMI.php">BMI</a>
         <a href="LingkarKepala.php">Lingkar Kepala Bayi</a>
-        <a href="Contact.php">Kontak Kami</a>
+        <a href="contact.php">Kontak Kami</a>
     </nav>
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Selamat Datang di Posyandu Desa</h1>
-            <p>Posyandu Desa menyediakan layanan kesehatan dasar bagi ibu dan anak, imunisasi, serta pemantauan tumbuh kembang anak.</p>
-            <ul class="hero-list">
-                <li>Layanan Kesehatan Gratis</li>
-                <li>Pemantauan Tumbuh Kembang Anak</li>
-                <li>Imunisasi Rutin</li>
-                <li>Edukasi Kesehatan Ibu & Anak</li>
-            </ul>
-        </div>
-        <img src="image.png" alt="Kegiatan Posyandu Desa">
+    <section class="content">
+        <h1>Kontak Kami</h1>
+        <p>Hubungi kami untuk informasi lebih lanjut:</p>
+        <ul>
+            <li>Email: <a href="mailto:posyandu@desa.com">posyandu@desa.com</a></li>
+            <li>Telepon: +62 812-3456-7890</li>
+            <li>Alamat: Jl. Sehat No. 123, Desa Harmoni</li>
+        </ul>
+        <p>Atau kunjungi kami langsung di Posyandu Desa untuk mendapatkan layanan terbaik.</p>
     </section>
     <footer>
         &copy; 2024 Posyandu Desa. Semua Hak Dilindungi.

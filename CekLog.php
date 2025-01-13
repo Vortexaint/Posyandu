@@ -6,10 +6,18 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 $result = mysqli_query($koneksi, "SELECT * FROM user WHERE username='$username' AND password='$password'");
+
 if (mysqli_num_rows($result) > 0) {
+    $user = mysqli_fetch_assoc($result);
     $_SESSION['loggedIn'] = true;
     $_SESSION['username'] = $username;
-    header("Location: Dashboard.php");
+    $_SESSION['role'] = $user['role'];
+
+    if ($user['role'] === 'admin') {
+        header("Location: adminDashboard.php");
+    } else {
+        header("Location: Dashboard.php");
+    }
     exit;
 } else {
     $_SESSION['error'] = "Username atau password salah!";

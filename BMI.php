@@ -1,18 +1,25 @@
 <?php
+require 'koneksi.php';
 session_start();
 
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
     header("Location: Login.php");
     exit;
 }
-?>
 
+$query = "SELECT id_bayi, nama_bayi, bb, umur, (bb / (umur * umur)) AS BMI FROM `data_bayi`";
+$result = mysqli_query($koneksi, $query);
+
+if (!$result) {
+    die("Query Error: " . mysqli_error($koneksi));
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posyandu - Dashboard</title>
+    <title>Data BMI Bayi</title>
     <style>
         * {
             margin: 0;
@@ -125,21 +132,30 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
         <a href="LingkarKepala.php">Lingkar Kepala Bayi</a>
         <a href="Contact.php">Kontak Kami</a>
     </nav>
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Selamat Datang di Posyandu Desa</h1>
-            <p>Posyandu Desa menyediakan layanan kesehatan dasar bagi ibu dan anak, imunisasi, serta pemantauan tumbuh kembang anak.</p>
-            <ul class="hero-list">
-                <li>Layanan Kesehatan Gratis</li>
-                <li>Pemantauan Tumbuh Kembang Anak</li>
-                <li>Imunisasi Rutin</li>
-                <li>Edukasi Kesehatan Ibu & Anak</li>
-            </ul>
-        </div>
-        <img src="image.png" alt="Kegiatan Posyandu Desa">
+    <section class="content">
+        <h1>Data BMI Bayi</h1>
+        <table border="1">
+            <tr>
+                <th>ID Bayi</th>
+                <th>Nama Bayi</th>
+                <th>Berat Badan (kg)</th>
+                <th>Umur (tahun)</th>
+                <th>BMI</th>
+            </tr>
+            <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+            <tr>
+                <td><?= htmlspecialchars($row['id_bayi']) ?></td>
+                <td><?= htmlspecialchars($row['nama_bayi']) ?></td>
+                <td><?= htmlspecialchars($row['bb']) ?></td>
+                <td><?= htmlspecialchars($row['umur']) ?></td>
+                <td><?= round($row['BMI'], 2) ?></td>
+            </tr>
+            <?php endwhile; ?>
+        </table>
     </section>
     <footer>
         &copy; 2024 Posyandu Desa. Semua Hak Dilindungi.
     </footer>
 </body>
 </html>
+<?php mysqli_close($koneksi); ?>

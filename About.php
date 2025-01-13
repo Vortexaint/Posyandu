@@ -6,13 +6,12 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posyandu - Dashboard</title>
+    <title>Tentang Posyandu</title>
     <style>
         * {
             margin: 0;
@@ -125,18 +124,16 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
         <a href="LingkarKepala.php">Lingkar Kepala Bayi</a>
         <a href="Contact.php">Kontak Kami</a>
     </nav>
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Selamat Datang di Posyandu Desa</h1>
-            <p>Posyandu Desa menyediakan layanan kesehatan dasar bagi ibu dan anak, imunisasi, serta pemantauan tumbuh kembang anak.</p>
-            <ul class="hero-list">
-                <li>Layanan Kesehatan Gratis</li>
-                <li>Pemantauan Tumbuh Kembang Anak</li>
-                <li>Imunisasi Rutin</li>
-                <li>Edukasi Kesehatan Ibu & Anak</li>
-            </ul>
-        </div>
-        <img src="image.png" alt="Kegiatan Posyandu Desa">
+    <section class="content">
+        <h1>Tentang Posyandu Desa</h1>
+        <p>Posyandu Desa adalah pusat pelayanan terpadu yang memberikan berbagai layanan kesehatan dasar untuk ibu dan anak, seperti:</p>
+        <ul>
+            <li>Imunisasi untuk bayi dan balita</li>
+            <li>Pemantauan tumbuh kembang anak</li>
+            <li>Konsultasi kesehatan ibu dan anak</li>
+            <li>Edukasi tentang pola hidup sehat</li>
+        </ul>
+        <p>Dengan dukungan dari para kader dan tenaga medis, kami berkomitmen untuk meningkatkan kesejahteraan masyarakat.</p>
     </section>
     <footer>
         &copy; 2024 Posyandu Desa. Semua Hak Dilindungi.
