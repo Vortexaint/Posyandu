@@ -9,32 +9,39 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['role'] !== 'admin') {
 
 // Handle Create
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create'])) {
-    $nama_bayi = $_POST['nama_bayi'];
-    $lingkar_kepala = $_POST['lingkar_kepala'];
+    $nama = $_POST['nama'];
+    $alamat = $_POST['alamat'];
+    $no_tlp = $_POST['no_tlp'];
+    $bb = $_POST['bb'];
+    $kondisi = $_POST['kondisi'];
 
-    $insertQuery = "INSERT INTO data_bayi (nama_bayi, linkar_kepala) VALUES ('$nama_bayi', '$lingkar_kepala')";
+    $insertQuery = "INSERT INTO data_warga (nama, alamat, no_tlp, bb, kondisi) VALUES ('$nama', '$alamat', '$no_tlp', '$bb', '$kondisi')";
     mysqli_query($koneksi, $insertQuery);
 }
 
 // Handle Update
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
-    $id_bayi = $_POST['id_bayi'];
-    $lingkar_kepala = $_POST['lingkar_kepala'];
+    $id_warga = $_POST['id_warga'];
+    $nama = $_POST['nama'];
+    $alamat = $_POST['alamat'];
+    $no_tlp = $_POST['no_tlp'];
+    $bb = $_POST['bb'];
+    $kondisi = $_POST['kondisi'];
 
-    $updateQuery = "UPDATE data_bayi SET linkar_kepala='$lingkar_kepala' WHERE id_bayi='$id_bayi'";
+    $updateQuery = "UPDATE data_warga SET nama='$nama', alamat='$alamat', no_tlp='$no_tlp', '$bb', '$kondisi' WHERE id_warga='$id_warga'";
     mysqli_query($koneksi, $updateQuery);
 }
 
 // Handle Delete
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
-    $id_bayi = $_POST['id_bayi'];
+    $id_warga = $_POST['id_warga'];
 
-    $deleteQuery = "DELETE FROM data_bayi WHERE id_bayi='$id_bayi'";
+    $deleteQuery = "DELETE FROM data_warga WHERE id_warga='$id_warga'";
     mysqli_query($koneksi, $deleteQuery);
 }
 
 // Fetch Data
-$query = "SELECT id_bayi, nama_bayi, linkar_kepala FROM data_bayi";
+$query = "SELECT * FROM data_warga";
 $result = mysqli_query($koneksi, $query);
 ?>
 <!DOCTYPE html>
@@ -42,7 +49,7 @@ $result = mysqli_query($koneksi, $query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelola Data Lingkar Kepala</title>
+    <title>Kelola Data Warga</title>
     <link rel="stylesheet" href="adminlinkarkepala.css">
     <style>
         .modal {
@@ -67,24 +74,31 @@ $result = mysqli_query($koneksi, $query);
     </style>
 </head>
 <body>
-    <h1>Data Lingkar Kepala Bayi</h1>
-    <button class="button" onclick="openModal('createModal')">Tambah Data Bayi</button>
+    <h1>Data Warga</h1>
+    <button class="button" onclick="openModal('createModal')">Tambah Data Warga</button>
+
     <table>
         <tr>
-            <th>ID Bayi</th>
-            <th>Nama Bayi</th>
-            <th>Lingkar Kepala (cm)</th>
+            <th>ID Warga</th>
+            <th>Nama Warga</th>
+            <th>Alamat</th>
+            <th>No. Telepon</th>
+            <th>Berat Badan</th>
+            <th>Kondisi</th>
             <th>Aksi</th>
         </tr>
         <?php while ($row = mysqli_fetch_assoc($result)) : ?>
         <tr>
-            <td><?= htmlspecialchars($row['id_bayi']) ?></td>
-            <td><?= htmlspecialchars($row['nama_bayi']) ?></td>
-            <td><?= $row['linkar_kepala'] ?></td>
+            <td><?= htmlspecialchars($row['id_warga']) ?></td>
+            <td><?= htmlspecialchars($row['nama']) ?></td>
+            <td><?= htmlspecialchars($row['alamat']) ?></td>
+            <td><?= htmlspecialchars($row['no_tlp']) ?></td>
+            <td><?= htmlspecialchars($row['bb']) ?></td>
+            <td><?= htmlspecialchars($row['kondisi']) ?></td>
             <td>
                 <button class="button" onclick="openModal('updateModal', <?= htmlspecialchars(json_encode($row)) ?>)">Update</button>
                 <form method="POST" style="display:inline;">
-                    <input type="hidden" name="id_bayi" value="<?= $row['id_bayi'] ?>">
+                    <input type="hidden" name="id_warga" value="<?= $row['id_warga'] ?>">
                     <button type="submit" name="delete" class="button delete-button">Hapus</button>
                 </form>
             </td>
@@ -92,15 +106,16 @@ $result = mysqli_query($koneksi, $query);
         <?php endwhile; ?>
     </table>
 
-    <a href="adminDashboard.php" class="back-link">Kembali ke Dashboard</a>
-
     <div id="createModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('createModal')">&times;</span>
-            <h2>Tambah Data Bayi</h2>
+            <h2>Tambah Data Warga</h2>
             <form method="POST">
-                <input type="text" name="nama_bayi" placeholder="Nama Bayi" required>
-                <input type="number" name="lingkar_kepala" placeholder="Lingkar Kepala (cm)" step="0.01" required>
+                <input type="text" name="nama" placeholder="Nama Warga" required>
+                <input type="text" name="alamat" placeholder="Alamat" required>
+                <input type="text" name="no_tlp" placeholder="No Telepon" required>
+                <input type="text" name="bb" placeholder="Berat Badan" required>
+                <input type="text" name="kondisi" placeholder="Kondisi" required>
                 <button type="submit" name="create" class="button">Tambah</button>
             </form>
         </div>
@@ -109,11 +124,14 @@ $result = mysqli_query($koneksi, $query);
     <div id="updateModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('updateModal')">&times;</span>
-            <h2>Update Data Bayi</h2>
+            <h2>Update Data Warga</h2>
             <form method="POST">
-                <input type="hidden" name="id_bayi" id="update-id">
-                <input type="text" name="nama_bayi" id="update-nama" disabled>
-                <input type="number" name="lingkar_kepala" id="update-lingkar" placeholder="Lingkar Kepala (cm)" step="0.01" required>
+                <input type="hidden" name="id_warga" id="update-id">
+                <input type="text" name="nama" id="update-nama" required>
+                <input type="text" name="alamat" id="update-alamat" required>
+                <input type="text" name="no_tlp" id="update-telepon" required>
+                <input type="text" name="bb" id="update-beratBadan" required>
+                <input type="text" name="kondisi" id="update-kondisi" required>
                 <button type="submit" name="update" class="button">Update</button>
             </form>
         </div>
@@ -121,12 +139,14 @@ $result = mysqli_query($koneksi, $query);
 
     <script>
         function openModal(modalId, data = null) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = "block";
+            document.getElementById(modalId).style.display = "block";
             if (data && modalId === 'updateModal') {
-                document.getElementById('update-id').value = data.id_bayi;
-                document.getElementById('update-nama').value = data.nama_bayi;
-                document.getElementById('update-lingkar').value = data.linkar_kepala;
+                document.getElementById('update-id').value = data.id_warga;
+                document.getElementById('update-nama').value = data.nama;
+                document.getElementById('update-alamat').value = data.alamat;
+                document.getElementById('update-telepon').value = data.no_tlp;
+                document.getElementById('update-beratBadan').value = data.bb;
+                document.getElementById('update-kondisi').value = data.kondisi;
             }
         }
 
@@ -134,7 +154,7 @@ $result = mysqli_query($koneksi, $query);
             document.getElementById(modalId).style.display = "none";
         }
 
-        window.onclick = function (event) {
+        window.onclick = function(event) {
             const modals = document.getElementsByClassName('modal');
             Array.from(modals).forEach(modal => {
                 if (event.target === modal) {

@@ -46,14 +46,33 @@ $result = mysqli_query($koneksi, $query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD Data BMI Bayi (Popup)</title>
     <link rel="stylesheet" href="adminbmi.css">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
     <h1>Data BMI Bayi</h1>
 
-    <!-- Button to trigger modal -->
     <button class="button" onclick="openModal('createModal')">Tambah Data Bayi</button>
 
-    <!-- Table Read -->
     <table>
         <tr>
             <th>ID Bayi</th>
@@ -71,9 +90,7 @@ $result = mysqli_query($koneksi, $query);
             <td><?= $row['umur'] ?></td>
             <td><?= round($row['BMI'], 2) ?></td>
             <td>
-                <!-- Update Button -->
                 <button class="button" onclick="openModal('updateModal', <?= htmlspecialchars(json_encode($row)) ?>)">Update</button>
-                <!-- Delete Button -->
                 <form method="POST" style="display:inline;">
                     <input type="hidden" name="id_bayi" value="<?= $row['id_bayi'] ?>">
                     <button type="submit" name="delete" class="button delete-button">Hapus</button>
@@ -85,7 +102,6 @@ $result = mysqli_query($koneksi, $query);
 
     <a href="adminDashboard.php" class="back-link">Kembali ke Dashboard</a>
 
-    <!-- Modal for Create -->
     <div id="createModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('createModal')">&times;</span>
@@ -99,7 +115,6 @@ $result = mysqli_query($koneksi, $query);
         </div>
     </div>
 
-    <!-- Modal for Update -->
     <div id="updateModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('updateModal')">&times;</span>
@@ -115,7 +130,6 @@ $result = mysqli_query($koneksi, $query);
     </div>
 
     <script>
-        // Open modal
         function openModal(modalId, data = null) {
             document.getElementById(modalId).style.display = "block";
             if (data && modalId === 'updateModal') {
@@ -126,12 +140,10 @@ $result = mysqli_query($koneksi, $query);
             }
         }
 
-        // Close modal
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = "none";
         }
 
-        // Close modal when clicking outside content
         window.onclick = function(event) {
             const modals = document.getElementsByClassName('modal');
             Array.from(modals).forEach(modal => {

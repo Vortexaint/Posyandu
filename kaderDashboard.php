@@ -21,8 +21,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['role'] !== 'kader') {
         <div class="button-group">
             <a href="kaderBMI.php" class="button">Kelola Data BMI</a>
             <a href="kaderLingkarKepala.php" class="button">Kelola Lingkar Kepala</a>
-            <a href="kaderProfil.php" class="button">Profil</a>
-            <a href="login.php" class="button">Logout</a>
+            <a href="signOut.php" class="button">Logout</a>
         </div>
     </div>
 </body>
