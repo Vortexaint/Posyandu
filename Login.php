@@ -80,7 +80,18 @@ unset($_SESSION['error']);
             }
             return true;
         }
+
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const showPasswordCheckbox = document.getElementById('showPassword');
+            if (showPasswordCheckbox.checked) {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        }
     </script>
+
 </head>
 <body>
     <div class="dashboard-container">
@@ -93,7 +104,10 @@ unset($_SESSION['error']);
             </a>
             <h1 class="dashboard-title">Login</h1>
             <input type="text" class="form-control" name="username" placeholder="Username" required>
-            <input type="password" class="form-control" name="password" placeholder="Password" required>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+            <div style="text-align: left; margin: 10px 0;">
+                <input type="checkbox" id="showPassword" onclick="togglePassword()"> Show Password
+            </div>
             <div class="buttons">
                 <button type="submit" class="button">Login</button>
             </div>

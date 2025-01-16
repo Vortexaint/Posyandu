@@ -113,6 +113,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             return true;
         }
+
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const showPasswordCheckbox = document.getElementById('showPassword');
+            if (showPasswordCheckbox.checked) {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        }
     </script>
 </head>
 <body>
@@ -127,6 +137,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1 class="dashboard-title">Daftar</h1>
             <input type="text" class="form-control" name="username" placeholder="Email" required>
             <input type="password" class="form-control" name="password" placeholder="Password" required>
+            <div style="text-align: left; margin: 10px 0;">
+                <input type="checkbox" id="showPassword" onclick="togglePassword()"> Show Password
+            </div>
             <div class="buttons">
                 <button type="submit" class="button">Daftar</button>
             </div>
