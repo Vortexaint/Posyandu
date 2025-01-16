@@ -45,7 +45,7 @@ $result = mysqli_query($koneksi, $query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD Data BMI Bayi (Popup)</title>
-    <link rel="stylesheet" href="adminbmi.css">
+    <link rel="stylesheet" href="css/adminCRUD.css">
     <style>
         .modal {
             display: none;

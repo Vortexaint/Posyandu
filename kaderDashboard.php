@@ -13,7 +13,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['role'] !== 'kader') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Kader</title>
-    <link rel="stylesheet" href="kaderDashboard.css"> <!-- Pastikan nama file CSS sudah benar -->
+    <link rel="stylesheet" href="adminDashboard.css">
 </head>
 <body>
     <div class="dashboard-container">

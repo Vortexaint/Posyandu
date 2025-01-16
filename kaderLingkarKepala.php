@@ -24,7 +24,7 @@ $result = mysqli_query($koneksi, $query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelola Data Lingkar Kepala</title>
-    <link rel="stylesheet" href="kaderlingkarkepala.css">
+    <link rel="stylesheet" href="css/kader.css">
 </head>
 <body>
     <h1>Kelola Data Lingkar Kepala Bayi</h1>

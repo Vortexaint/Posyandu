@@ -20,7 +20,7 @@ if (!$result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lingkar Kepala Bayi</title>
-    <link rel="stylesheet" href="lingkarkepala.css">
+    <link rel="stylesheet" href="css/data.css">
 </head>
 <body>
     <header>

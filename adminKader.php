@@ -46,7 +46,7 @@ $result = mysqli_query($koneksi, $query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelola Data Kader</title>
-    <link rel="stylesheet" href="adminlinkarkepala.css">
+    <link rel="stylesheet" href="css/adminCRUD.css">
     <style>
         .modal {
             display: none;
