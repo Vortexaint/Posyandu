@@ -40,6 +40,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['role'] !== 'admin') {
     <h1>Selamat Datang, <?= htmlspecialchars($_SESSION['username']) ?>!</h1>
     <a href="adminBMI.php" class="button">Kelola Data BMI</a>
     <a href="adminLingkarKepala.php" class="button">Kelola Lingkar Kepala</a>
+    <a href="adminLingkarKepala.php" class="button">Profil</a>
     <a href="logout.php" class="button">Logout</a>
 </body>
 </html>
