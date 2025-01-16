@@ -5,26 +5,36 @@ include 'koneksi.php';
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$result = mysqli_query($koneksi, "SELECT * FROM user WHERE username='$username' AND password='$password'");
+$stmt = $koneksi->prepare("SELECT * FROM user WHERE username = ?");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
 
-if (mysqli_num_rows($result) > 0) {
-    $user = mysqli_fetch_assoc($result);
-    $_SESSION['loggedIn'] = true;
-    $_SESSION['username'] = $username;
-    $_SESSION['role'] = $user['role'];
+if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
 
-    if ($user['role'] === 'admin') {
-        header("Location: adminDashboard.php");
-    } elseif ($user['role'] === 'kader') {
-        header("Location: kaderDashboard.php");
-    } else {
-        header("Location: Dashboard.php");
+    if ($password === $user['password']) {
+        $_SESSION['loggedIn'] = true;
+        $_SESSION['username'] = $username;
+        $_SESSION['role'] = $user['role'];
+
+        if ($user['role'] !== 'admin') {
+            if ($user['role'] === 'kader') {
+                header("Location: kaderDashboard.php");
+            } else {
+                header("Location: Dashboard.php");
+            }
+        } else {
+            header("Location: adminDashboard.php");
+        }
+        exit;
+        } else {
+        $_SESSION['error'] = "Password salah!";
     }
-    exit;
-    
 } else {
-    $_SESSION['error'] = "Username atau password salah!";
-    header("Location: Login.php");
-    exit;
+    $_SESSION['error'] = "Username tidak ditemukan!";
 }
+
+header("Location: Login.php");
+exit;
 ?>
