@@ -15,10 +15,13 @@ if (mysqli_num_rows($result) > 0) {
 
     if ($user['role'] === 'admin') {
         header("Location: adminDashboard.php");
+    } elseif ($user['role'] === 'kader') {
+        header("Location: kaderDashboard.php");
     } else {
         header("Location: Dashboard.php");
     }
     exit;
+    
 } else {
     $_SESSION['error'] = "Username atau password salah!";
     header("Location: Login.php");
