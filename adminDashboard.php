@@ -22,7 +22,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['role'] !== 'admin') {
             <a href="adminBMI.php" class="button">Kelola Data BMI</a>
             <a href="adminLingkarKepala.php" class="button">Kelola Lingkar Kepala</a>
             <a href="adminProfil.php" class="button">Profil</a>
-            <a href="logout.php" class="button">Logout</a>
+            <a href="index.php" class="button">Logout</a>
         </div>
     </div>
 </body>
