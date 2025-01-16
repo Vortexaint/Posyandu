@@ -24,46 +24,35 @@ $result = mysqli_query($koneksi, $query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelola Data Lingkar Kepala</title>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 10px;
-        }
-        .button {
-            padding: 5px 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 3px;
-        }
-    </style>
+    <link rel="stylesheet" href="kaderlingkarkepala.css">
 </head>
 <body>
     <h1>Kelola Data Lingkar Kepala Bayi</h1>
-    <table>
-        <tr>
-            <th>ID Bayi</th>
-            <th>Nama Bayi</th>
-            <th>Lingkar Kepala (cm)</th>
-            <th>Aksi</th>
-        </tr>
-        <?php while ($row = mysqli_fetch_assoc($result)) : ?>
-        <tr>
-            <form method="POST">
-                <td><?= htmlspecialchars($row['id_bayi']) ?></td>
-                <td><?= htmlspecialchars($row['nama_bayi']) ?></td>
-                <td><input type="number" name="lingkar_kepala" value="<?= $row['linkar_kepala'] ?>" step="0.01"></td>
-                <td>
-                    <input type="hidden" name="id_bayi" value="<?= $row['id_bayi'] ?>">
-                    <button type="submit" class="button">Update</button>
-                </td>
-            </form>
-        </tr>
-        <?php endwhile; ?>
-    </table>
+    <div class="form-create">
+        <table>
+            <tr>
+                <th>ID Bayi</th>
+                <th>Nama Bayi</th>
+                <th>Lingkar Kepala (cm)</th>
+                <th>Aksi</th>
+            </tr>
+            <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+            <tr>
+                <form method="POST">
+                    <td><?= htmlspecialchars($row['id_bayi']) ?></td>
+                    <td><?= htmlspecialchars($row['nama_bayi']) ?></td>
+                    <td><input type="number" name="lingkar_kepala" value="<?= $row['linkar_kepala'] ?>" step="0.01"></td>
+                    <td>
+                        <input type="hidden" name="id_bayi" value="<?= $row['id_bayi'] ?>">
+                        <button type="submit" class="button">Update</button>
+                    </td>
+                </form>
+            </tr>
+            <?php endwhile; ?>
+        </table>
+    </div>
     <br>
-    <a href="adminDashboard.php">Kembali ke Dashboard</a>
+    <a href="adminDashboard.php" class="back-link">Kembali ke Dashboard</a>
 </body>
 </html>
 <?php mysqli_close($koneksi); ?>
