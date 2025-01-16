@@ -24,20 +24,7 @@ $result = mysqli_query($koneksi, $query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelola Data Lingkar Kepala</title>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 10px;
-        }
-        .button {
-            padding: 5px 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 3px;
-        }
-    </style>
+    <link rel="stylesheet" href="adminlinkarkepala.css">
 </head>
 <body>
     <h1>Kelola Data Lingkar Kepala Bayi</h1>
@@ -63,7 +50,7 @@ $result = mysqli_query($koneksi, $query);
         <?php endwhile; ?>
     </table>
     <br>
-    <a href="adminDashboard.php">Kembali ke Dashboard</a>
+    <a href="adminDashboard.php" class="back-link">Kembali ke Dashboard</a>
 </body>
 </html>
 <?php mysqli_close($koneksi); ?>
