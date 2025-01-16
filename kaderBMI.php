@@ -2,6 +2,11 @@
 require 'koneksi.php';
 session_start();
 
+if (!isset($_SESSION['loggedIn']) || $_SESSION['role'] !== 'kader') {
+    header("Location: login.php");
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_bayi = $_POST['id_bayi'];
     $bb = $_POST['bb'];

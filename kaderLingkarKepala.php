@@ -3,7 +3,7 @@ require 'koneksi.php';
 session_start();
 
 if (!isset($_SESSION['loggedIn']) || $_SESSION['role'] !== 'kader') {
-    header("Location: Login.php");
+    header("Location: login.php");
     exit;
 }
 
