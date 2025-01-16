@@ -1,14 +1,47 @@
 <?php
 session_start();
+include 'koneksi.php';
+
 $error = isset($_SESSION['error']) ? $_SESSION['error'] : '';
 unset($_SESSION['error']);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password']; // Simpan password langsung tanpa hashing
+    $role = 'warga';
+
+    // Validasi input
+    if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error'] = "Username harus berupa email yang valid.";
+        header("Location: Daftar(ViaVort).php");
+        exit;
+    }
+
+    // Periksa apakah username sudah ada
+    $checkUser = mysqli_query($koneksi, "SELECT * FROM user WHERE username='$username'");
+    if (mysqli_num_rows($checkUser) > 0) {
+        $_SESSION['error'] = "Username sudah digunakan.";
+        header("Location: Daftar(ViaVort).php");
+        exit;
+    }
+
+    // Tambahkan pengguna baru
+    $query = "INSERT INTO user (username, password, role) VALUES ('$username', '$password', '$role')";
+    if (mysqli_query($koneksi, $query)) {
+        $_SESSION['success'] = "Pendaftaran berhasil! Silakan login.";
+        header("Location: Login.php");
+        exit;
+    } else {
+        $_SESSION['error'] = "Terjadi kesalahan saat mendaftar.";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Posyandu Desa</title>
+    <title>Daftar Posyandu Desa</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -87,18 +120,18 @@ unset($_SESSION['error']);
         <?php if ($error): ?>
             <div class="error-message"><?= htmlspecialchars($error) ?></div>
         <?php endif; ?>
-        <form name="loginForm" action="CekLog.php" method="POST" autocomplete="off" onsubmit="return validateForm()">
-            <a href="index.php">
+        <form action="Daftar(ViaVort).php" method="POST" autocomplete="off">
+            <a href="Dashboard.php">
                 <div class="footer">Posyandu Desa</div>
             </a>
-            <h1 class="dashboard-title">Login</h1>
-            <input type="text" class="form-control" name="username" placeholder="Username" required>
+            <h1 class="dashboard-title">Daftar</h1>
+            <input type="text" class="form-control" name="username" placeholder="Email" required>
             <input type="password" class="form-control" name="password" placeholder="Password" required>
             <div class="buttons">
-                <button type="submit" class="button">Login</button>
+                <button type="submit" class="button">Daftar</button>
             </div>
         </form>
-        <p>Belum punya akun? <a href="Daftar(ViaVort).php">Daftar di sini</a></p>
+        <p>Sudah punya akun? <a href="Login.php">Login di sini</a></p>
     </div>
 </body>
 </html>
