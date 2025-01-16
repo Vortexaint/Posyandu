@@ -38,9 +38,9 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['role'] !== 'kader') {
 </head>
 <body>
     <h1>Selamat Datang, <?= htmlspecialchars($_SESSION['username']) ?>!</h1>
-    <a href="adminBMI.php" class="button">Kelola Data BMI</a>
-    <a href="adminLingkarKepala.php" class="button">Kelola Lingkar Kepala</a>
-    <a href="adminLingkarKepala.php" class="button">Profil</a>
-    <a href="logout.php" class="button">Logout</a>
+    <a href="kaderBMI.php" class="button">Kelola Data BMI</a>
+    <a href="kaderLingkarKepala.php" class="button">Kelola Lingkar Kepala</a>
+    <a href="kaderLingkarKepala.php" class="button">Profil</a>
+    <a href="login.php" class="button">Logout</a>
 </body>
 </html>
