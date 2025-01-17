@@ -152,6 +152,9 @@ $result = mysqli_query($koneksi, $query);
             });
         };
     </script>
+    <footer>
+        &copy; 2024 Posyandu Desa. Semua Hak Dilindungi.
+    </footer>
 </body>
 </html>
 <?php mysqli_close($koneksi); ?>

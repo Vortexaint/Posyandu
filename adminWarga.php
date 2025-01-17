@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
     $bb = $_POST['bb'];
     $kondisi = $_POST['kondisi'];
 
-    $updateQuery = "UPDATE data_warga SET nama='$nama', alamat='$alamat', no_tlp='$no_tlp', '$bb', '$kondisi' WHERE id_warga='$id_warga'";
+    $updateQuery = "UPDATE data_warga SET nama='$nama', alamat='$alamat', no_tlp='$no_tlp', bb = '$bb', kondisi = '$kondisi' WHERE id_warga='$id_warga'";
     mysqli_query($koneksi, $updateQuery);
 }
 
@@ -163,6 +163,9 @@ $result = mysqli_query($koneksi, $query);
             });
         };
     </script>
+    <footer>
+        &copy; 2024 Posyandu Desa. Semua Hak Dilindungi.
+    </footer>
 </body>
 </html>
 <?php mysqli_close($koneksi); ?>

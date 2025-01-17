@@ -39,6 +39,14 @@ header h2 {
     border: 2px solid #388E3C;
 }
 
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
 nav {
     display: flex;
     justify-content: space-around;

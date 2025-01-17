@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -107,7 +111,12 @@
 <body>
     <header>
         <h2>Posyandu Desa</h2>
-        <a href="login.php" class="login-button">Sign In</a>
+        <?php if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']): ?>
+            <b><span>Halo, <?= htmlspecialchars($_SESSION['username']); ?></span></b>
+            <a href="signOut.php" class="login-button">Logout</a>
+        <?php else: ?>
+            <a href="login.php" class="login-button">Sign In</a>
+        <?php endif; ?>
     </header>
     <nav>
         <a href="Dashboard.php">Beranda</a>

@@ -3,7 +3,7 @@ require 'koneksi.php';
 session_start();
 
 if (!isset($_SESSION['loggedIn']) || $_SESSION['role'] !== 'kader') {
-    header("Location: login.php");
+    header("Location: Login.php");
     exit;
 }
 
@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $query = "SELECT id_bayi, nama_bayi, linkar_kepala FROM data_bayi";
 $result = mysqli_query($koneksi, $query);
+
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -52,7 +53,10 @@ $result = mysqli_query($koneksi, $query);
         </table>
     </div>
     <br>
-    <a href="adminDashboard.php" class="back-link">Kembali ke Dashboard</a>
+    <a href="kaderDashboard.php" class="back-link">Kembali ke Dashboard</a>
+    <footer>
+        &copy; 2024 Posyandu Desa. Semua Hak Dilindungi.
+    </footer>
 </body>
 </html>
 <?php mysqli_close($koneksi); ?>

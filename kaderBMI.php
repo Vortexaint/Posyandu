@@ -57,6 +57,9 @@ $result = mysqli_query($koneksi, $query);
         </table>
     </div>
     <a href="kaderDashboard.php" class="back-link">Kembali ke Dashboard</a>
+    <footer>
+        &copy; 2024 Posyandu Desa. Semua Hak Dilindungi.
+    </footer>
 </body>
 </html>
 <?php mysqli_close($koneksi); ?>
