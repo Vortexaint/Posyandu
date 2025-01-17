@@ -1,12 +1,3 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
-    header("Location: Login.php");
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -136,7 +127,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
                 <li>Edukasi Kesehatan Ibu & Anak</li>
             </ul>
         </div>
-        <img src="image.png" alt="Kegiatan Posyandu Desa">
+        <img src="Assets\th.jfif" alt="Kegiatan Posyandu Desa">
     </section>
     <footer>
         &copy; 2024 Posyandu Desa. Semua Hak Dilindungi.
