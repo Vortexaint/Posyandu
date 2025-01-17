@@ -2,11 +2,6 @@
 require 'koneksi.php';
 session_start();
 
-if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
-    header("Location: Login.php");
-    exit;
-}
-
 $query = "SELECT id_bayi, nama_bayi, bb, umur, (bb / (umur * umur)) AS BMI FROM `data_bayi`";
 $result = mysqli_query($koneksi, $query);
 
@@ -29,7 +24,7 @@ if (!$result) {
             <b><span>Halo, <?= htmlspecialchars($_SESSION['username']); ?></span></b>
             <a href="signOut.php" class="login-button">Logout</a>
         <?php else: ?>
-            <a href="login.php" class="login-button">Sign In</a>
+            <a href="Login.php" class="login-button">Sign In</a>
         <?php endif; ?>
     </header>
     <nav>

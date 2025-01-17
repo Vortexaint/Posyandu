@@ -115,15 +115,15 @@ session_start();
             <b><span>Halo, <?= htmlspecialchars($_SESSION['username']); ?></span></b>
             <a href="signOut.php" class="login-button">Logout</a>
         <?php else: ?>
-            <a href="login.php" class="login-button">Sign In</a>
+            <a href="Login.php" class="login-button">Sign In</a>
         <?php endif; ?>
     </header>
     <nav>
         <a href="Dashboard.php">Beranda</a>
-        <a href="about.php">Tentang Posyandu</a>
+        <a href="About.php">Tentang Posyandu</a>
         <a href="BMI.php">BMI</a>
         <a href="LingkarKepala.php">Lingkar Kepala Bayi</a>
-        <a href="contact.php">Kontak Kami</a>
+        <a href="Contact.php">Kontak Kami</a>
     </nav>
     <section class="content">
         <h1>Kontak Kami</h1>

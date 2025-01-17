@@ -115,7 +115,7 @@ session_start();
             <b><span>Halo, <?= htmlspecialchars($_SESSION['username']); ?></span></b>
             <a href="signOut.php" class="login-button">Logout</a>
         <?php else: ?>
-            <a href="login.php" class="login-button">Sign In</a>
+            <a href="Login.php" class="login-button">Sign In</a>
         <?php endif; ?>
     </header>
     <nav>
